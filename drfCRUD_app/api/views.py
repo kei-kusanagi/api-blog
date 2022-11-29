@@ -6,7 +6,7 @@ from drfCRUD_app.models import Blog
 from drfCRUD_app.api import permissions
 
 from .serializers import BlogSerializer
-
+from . import permissions
 
 class BlogVS(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticatedOrReadOnly]
