@@ -13,6 +13,16 @@ class BlogVS(viewsets.ModelViewSet):
     queryset = Blog.objects.all()
     serializer_class = BlogSerializer
 
+    def get_queryset(self):
+        return Blog.objects.all()
+
+    def perform_create(self, serializer):
+
+        review_user = self.request.user
+        # review_queryset = Blog.objects.filter(review_user=review_user)
+
+        serializer.save(review_user=review_user)
+
 
 class blog_detail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Blog.objects.all()
