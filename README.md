@@ -1,6 +1,6 @@
 # Enlace para registro de usuarios
 
-El enlase http://127.0.0.1:8000/account/register/ nos ayudara a crear usuarios, lso cuales tendran solo el rango de usuario normal (node Staff o Administrador), los datos que devemos pasar en el JSON por medio de una peticion 'POST' son:
+El enlace http://127.0.0.1:8000/account/register/ nos ayudara a crear usuarios, los cuales tendrán sólo el rango de usuario normal (no de Staff o Administrador), los datos que debemos pasar en el JSON por medio de una petición 'POST' son:
 
 ```Json
 {
@@ -16,7 +16,7 @@ El enlase http://127.0.0.1:8000/account/register/ nos ayudara a crear usuarios, 
 }
 ```
 
-Esto como respuesta nos dara el siguiente JSON
+Esto como respuesta nos dará el siguiente JSON:
 
 ```Json
 {
@@ -34,9 +34,9 @@ Esto como respuesta nos dara el siguiente JSON
 
 Este Token se quedara guardado en la base de datos hasta hacer #Logout
 
-## Erores en registro
+## Errores en registro
 
-En caso de usar un usuario ya existente en la base de datos nos regresara el siguiente mensaje de error:
+En caso de usar un usuario ya existente, en la base de datos, nos regresara el siguiente mensaje de error:
 
 ```Json
 {
@@ -50,7 +50,7 @@ En caso de usar un usuario ya existente en la base de datos nos regresara el sig
 }
 ```
 
-Si el Email introducido ya esta registrado con otro usuario en la base de datos, nos regresara el siguiente eror:
+Si el Email introducido ya esta registrado con otro usuario, en la base de datos nos regresara el siguiente error:
 
 ```Json
 {
@@ -61,7 +61,7 @@ Si el Email introducido ya esta registrado con otro usuario en la base de datos,
 ```
 
 
-Si nuestra contraseña y su confirmacion no coinciden nos regresara el siguiente mensaje de error:
+Si nuestra contraseña y su confirmación no coinciden nos regresara el siguiente mensaje de error:
 
 Entrada
 ```Json
@@ -88,7 +88,7 @@ Salida
 
 # Enlace para hacer Login
 
-Con el enlase http://127.0.0.1:8000/account/login/ podemos hacer Log in de nuestros usuarios que ya creeamos con el anterior metodo, solo devemos pasarle una peticion 'POST' y como body el Json con el usuario y contraseña registradas, esto crera (si no lo tiene ya) el token de este usuario en la base de datos.
+Con el enlace http://127.0.0.1:8000/account/login/ podemos hacer Log in de nuestros usuarios que ya creamos con el anterior método, solo debemos pasarle una petición 'POST' y como body el Json con el usuario y contraseña registradas, esto creara (si no lo tiene ya) el token de este usuario en la base de datos.
 
 Entrada
 ```Json
@@ -131,13 +131,13 @@ En caso de mandar mal el username o el password nos regresara el mismo error:
 
 # Logout
 
-Al mandar la peticion de logout se destruira el token asignado al usuario del token que estamos pasando, la peticion sera al link http://127.0.0.1:8000/account/logout/ tendra que ser un 'POST' y dentro del body pasar como headers la KEY Authorization y como VALUE Token 'el token del usuario que hara logout'
+Al mandar la petición de logout se destruirá el token asignado al usuario del token que estamos pasando, la petición será al link http://127.0.0.1:8000/account/logout/ tendrá que ser un 'POST' y dentro del body pasar como headers la KEY Authorization y como VALUE Token 'el token del usuario que hará logout'
 
 ![image](/IMG/Pasted%20image%2020221130195948.png)
 
 ## Errores al hacer Logout
 
-Si mandamos mal la peticion por que el token esta incompleto nos regresara el sigueinte response
+Si mandamos mal la petición por que el token esta incompleto nos regresara el siguiente response
 
 ```JSON
 {
