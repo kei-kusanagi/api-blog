@@ -150,11 +150,11 @@ Si mandamos mal la petición por que el token esta incompleto nos regresara el s
 ```
 
 
-## Lista de Blog's existentes
+# Lista de Blog's existentes
 
 Para obtener la lista de Blogs existentes en la base de datos de TODOS los usuarios, necesitamos mandar una petición GET al link http://127.0.0.1:8000/api/blog/ , en esta no importa si en los headers lleva algún token de autenticación ya que los permisos están configurados para que cualquier usuario, ya sea anónimo, normal, staff o admin, pueda hacer las peticiones GET que necesite sin ningún limite.
 
-Este nos regresara un response con un JSON englobando todas las entradas existentes en orden en el que fueron creadas, mostrando primeramente el numero de "id" de la entrada, el nombre del usuario que escribió la entrada como "review_user", seguido del texto de la entrada mostrándolo como "entrada" y la fecha en que fue creado como "fecha"
+Este nos regresara un response con un JSON englobando todas las entradas existentes en orden en el que fueron creadas (de la mas antigua a la mas reciente), mostrando primeramente el numero de "id" de la entrada, el nombre del usuario que escribió la entrada como "review_user", seguido del texto de la entrada mostrándolo como "entrada" y la fecha en que fue creado como "fecha"
 
 
 ```Json
@@ -196,7 +196,7 @@ Este nos regresara un response con un JSON englobando todas las entradas existen
 
         "titulo": "Token",
 
-        "entrada": "Intento de crear uina entrada con un token",
+        "entrada": "Intento de crear una entrada con un token",
 
         "fecha": "2022-11-29T23:42:31.068123Z"
 
@@ -205,6 +205,47 @@ Este nos regresara un response con un JSON englobando todas las entradas existen
 ]
 ```
 
-## Entrada de Blog
+# Entrada de Blog
 
-Para crear una entrada de Blog mandaremos una petición POST al link 
+Para crear una entrada de Blog mandaremos una petición POST al link http://127.0.0.1:8000/api/blog/  como body tenemos que pasarle un Json con solo dos campos, "titulo" y "entrada" este debe llevar en el header como KEY: "Authorization" y como VALUE: "Token 'token del usuario logeado'":
+
+![[Pasted image 20221201120112.png]]
+
+```Json
+  {
+
+        "titulo": "Titulo que llevara la entrada de blog",
+
+        "entrada": "Todo el texto que llevara la entarda"
+
+  }
+```
+
+
+## Errores Entrada de Blog
+
+El titulo no deberá pasar de 200 caracteres en caso de sobrepasar estos nos regresara el siguiente mensaje de error
+
+```Json
+{
+
+    "titulo": [
+
+        "Ensure this field has no more than 200 characters."
+
+    ]
+
+}
+```
+
+La "entrada" no tiene un máximo de caracteres establecido
+
+Si no pasamos un token valido, ya sea porque este usuario ya hiso Logout o porque esta mal escrito obtendremos como respuesta:
+
+```Json
+{
+
+    "detail": "Invalid token."
+
+}
+```
