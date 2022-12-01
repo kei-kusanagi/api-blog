@@ -61,7 +61,7 @@ Si el Email introducido ya esta registrado con otro usuario, en la base de datos
 ```
 
 
-Si nuestra contraseña y su confirmación no coinciden nos regresara el siguiente mensaje de error:
+Si nuestra contraseña y su confirmación no coinciden, nos regresara el siguiente mensaje de error:
 
 Entrada
 ```Json
@@ -131,7 +131,9 @@ En caso de mandar mal el username o el password nos regresara el mismo error:
 
 # Logout
 
-Al mandar la petición de logout se destruirá el token asignado al usuario del token que estamos pasando, la petición será al link http://127.0.0.1:8000/account/logout/ tendrá que ser un 'POST' y dentro del body pasar como headers la KEY Authorization y como VALUE Token 'el token del usuario que hará logout'
+Al mandar la petición de logout se destruirá el token asignado al usuario del token que estamos pasando. La petición será al link http://127.0.0.1:8000/account/logout/ 
+
+Tendrá que ser un 'POST' y dentro del body pasar como headers la KEY Authorization y como VALUE Token ``"el token del usuario que hará logout"``
 
 ![image](/IMG/Pasted%20image%2020221130195948.png)
 
