@@ -133,7 +133,7 @@ En caso de mandar mal el username o el password nos regresara el mismo error:
 
 Al mandar la peticion de logout se destruira el token asignado al usuario del token que estamos pasando, la peticion sera al link http://127.0.0.1:8000/account/logout/ tendra que ser un 'POST' y dentro del body pasar como headers la KEY Authorization y como VALUE Token 'el token del usuario que hara logout'
 
-![[Pasted image 20221130195948.png]]
+![image](/IMG/Pasted%20image%2020221130195948.png)
 
 ## Errores al hacer Logout
 
