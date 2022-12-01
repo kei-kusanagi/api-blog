@@ -148,3 +148,63 @@ Si mandamos mal la petición por que el token esta incompleto nos regresara el s
 
 }
 ```
+
+
+## Lista de Blog's existentes
+
+Para obtener la lista de Blogs existentes en la base de datos de TODOS los usuarios, necesitamos mandar una petición GET al link http://127.0.0.1:8000/api/blog/ , en esta no importa si en los headers lleva algún token de autenticación ya que los permisos están configurados para que cualquier usuario, ya sea anónimo, normal, staff o admin, pueda hacer las peticiones GET que necesite sin ningún limite.
+
+Este nos regresara un response con un JSON englobando todas las entradas existentes en orden en el que fueron creadas, mostrando primeramente el numero de "id" de la entrada, el nombre del usuario que escribió la entrada como "review_user", seguido del texto de la entrada mostrándolo como "entrada" y la fecha en que fue creado como "fecha"
+
+
+```Json
+[
+
+    {
+
+        "id": 7,
+
+        "review_user": "keikusanagi",
+
+        "titulo": "Primera entrada - edit",
+
+        "entrada": "ljkahflkaklfafa - edit",
+
+        "fecha": "2022-11-29T22:16:16.202267Z"
+
+    },
+
+    {
+
+        "id": 8,
+
+        "review_user": "test",
+
+        "titulo": "hola 2",
+
+        "entrada": "hola otra ves - actualizado por administrador",
+
+        "fecha": "2022-11-29T19:52:06.271416Z"
+
+    },
+
+    {
+
+        "id": 9,
+
+        "review_user": "keikusanagi",
+
+        "titulo": "Token",
+
+        "entrada": "Intento de crear uina entrada con un token",
+
+        "fecha": "2022-11-29T23:42:31.068123Z"
+
+    }
+
+]
+```
+
+## Entrada de Blog
+
+Para crear una entrada de Blog mandaremos una petición POST al link 
